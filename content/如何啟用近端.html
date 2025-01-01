@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='HW1_Exam.html'>HW1_Exam</a><li class='has-children'><a href='w7.html'>w7</a><ul class='dropdown'><li><a href='EX.html'>EX</a><li><a href='ex.1.html'>ex.1</a><li><a href='ex.2.html'>ex.2</a><li><a href='ex.3.html'>ex.3</a><li><a href='ex.4.html'>ex.4</a><li><a href='ex.5.html'>ex.5</a><li><a href='ex.6.html'>ex.6</a><li><a href='ex.7.html'>ex.7</a><li><a href='ex.8.html'>ex.8</a><li><a href='ex.9.html'>ex.9</a></li></ul><li><a href='w10.html'>w10</a><li><a href='w11_ch.html'>w11_ch</a><li><a href='w11_hw.html'>w11_hw</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li class='has-children'><a href='HW2_Exam.html'>HW2_Exam</a><ul class='dropdown'><li><a href='w16_exam1.html'>w16_exam1</a></li></li></ul></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li class='has-children'><a href='HW3_Exam.html'>HW3_Exam</a><ul class='dropdown'><li><a href='w16_exam2.html'>w16_exam2</a></li></li></ul></ul><li class='has-children'><a href='HW4.html'>HW4</a><ul class='dropdown'><li><a href='HW4_Exam.html'>HW4_Exam</a></li></ul><li class='has-children'><a href='如何啟用近端.html'>如何啟用近端</a><ul class='dropdown'><li><a href='NX.html'>NX</a></li></ul><li><a href='Solvespace 操作.html'>Solvespace 操作</a><li><a href='Final Report.html'>Final Report</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='HW1_Exam.html'>HW1_Exam</a><li class='has-children'><a href='w7.html'>w7</a><ul class='dropdown'><li><a href='EX.html'>EX</a><li><a href='ex.1.html'>ex.1</a><li><a href='ex.2.html'>ex.2</a><li><a href='ex.3.html'>ex.3</a><li><a href='ex.4.html'>ex.4</a><li><a href='ex.5.html'>ex.5</a><li><a href='ex.6.html'>ex.6</a><li><a href='ex.7.html'>ex.7</a><li><a href='ex.8.html'>ex.8</a><li><a href='ex.9.html'>ex.9</a></li></ul><li><a href='w10.html'>w10</a><li><a href='w11_ch.html'>w11_ch</a><li><a href='w11_hw.html'>w11_hw</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li class='has-children'><a href='HW2_Exam.html'>HW2_Exam</a><ul class='dropdown'><li><a href='w16_exam1.html'>w16_exam1</a></li></li></ul></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li class='has-children'><a href='HW3_Exam.html'>HW3_Exam</a><ul class='dropdown'><li><a href='w16_exam2.html'>w16_exam2</a></li></li></ul></ul><li class='has-children'><a href='HW4.html'>HW4</a><ul class='dropdown'><li class='has-children'><a href='HW4_Exam.html'>HW4_Exam</a><ul class='dropdown'><li><a href='w16_exam3.html'>w16_exam3</a></li></li></ul></ul><li><a href='如何啟用近端.html'>如何啟用近端</a><li><a href='Solvespace 操作.html'>Solvespace 操作</a><li><a href='Final Report.html'>Final Report</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,10 +141,50 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW4_Exam << <a href='HW4_Exam.html'>Previous</a> <a href='NX.html'>Next</a> >> NX<br /><h1>如何啟用近端</h1>
+    <div id="tipue_search_content">w16_exam3 << <a href='w16_exam3.html'>Previous</a> <a href='Solvespace 操作.html'>Next</a> >> Solvespace 操作<br /><h1>如何啟用近端</h1>
 <p>說明影片</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/oWkYEzO7kDA?si=bHqXtanVQT7b_Jxh" title="YouTube video player" width="560"></iframe></p>
-<br />HW4_Exam << <a href='HW4_Exam.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install pyzmq cbor keyboard
+from coppeliasim_zmqremoteapi_client import RemoteAPIClient
+import keyboard
+ 
+# Connecting to the CoppeliaSim server
+client = RemoteAPIClient('localhost', 23000)
+ 
+print('Program started')
+sim = client.getObject('sim')
+ 
+# Get the handle for the slider (prismatic joint)
+slider = sim.getObject('/Prismatic_joint')
+ 
+# Starting the simulation
+sim.startSimulation()
+print('Simulation started')
+ 
+# Main control loop
+def main():
+    # Keep running until simulation is stopped
+    while True:
+        if keyboard.is_pressed('w'):  # Move slider to -0.15 position
+            print("w is pressed")
+            sim.setJointTargetPosition(slider, -0.15)
+         
+        if keyboard.is_pressed('s'):  # Reset slider to the original position
+            print("s is pressed")
+            sim.setJointTargetPosition(slider, 0.0)  # Reset to the initial position
+ 
+        if keyboard.is_pressed('q'):  # Stop the simulation when 'q' is pressed
+            print("q is pressed - stopping simulation")
+            sim.stopSimulation()
+            break
+ 
+# Start the main control loop
+main()
+</pre>
+<p><br/><br/>NX</p>
+<p>說明影片:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/R_4Lxipucuc?si=spgF8mvXmWIIf211" title="YouTube video player" width="560"></iframe></p>
+<br />w16_exam3 << <a href='w16_exam3.html'>Previous</a> <a href='Solvespace 操作.html'>Next</a> >> Solvespace 操作</div>
         
     <!-- footer -->
       <div class="container">
